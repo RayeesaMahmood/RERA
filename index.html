@@ -14,46 +14,59 @@
         }
         .section {
             scroll-margin-top: 5rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
 <body class="bg-gray-50">
     <!-- Navigation -->
     <nav class="fixed top-0 w-full bg-white shadow-md z-50">
-        <div class="container mx-auto px-4 py-3">
-            <div class="flex justify-between items-center">
-                <h1 class="text-2xl font-bold text-blue-600">RERA</h1>
-                <div class="flex space
-    <nav class="fixed top-0 w-full bg-white shadow-md z-50">
-        <div class="container mx-auto px-4 py-3">
-            <div class="flex justify-between items-center">
-                <div class="flex space-x-6">
-                    <a href="#about" class="hover:text-blue-600 transition">About</a>
-                    <a href="#courses" class="hover:text-blue-600 transition">Courses</a>
-                    <a href="#contact" class="hover:text-blue-600 transition">Contact</a>
-                </div>
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-blue-600">RERA</h1>
+            <div class="nav-links hidden md:flex">
+                <a href="#about" class="hover:text-blue-600 transition">About</a>
+                <a href="#courses" class="hover:text-blue-600 transition">Courses</a>
+                <a href="#contact" class="hover:text-blue-600 transition">Contact</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="pt-32 pb-20 px-4">
+    <section class="pt-32 pb-20 px-4 section">
         <div class="container mx-auto text-center">
             <h1 class="text-4xl md:text-5xl font-bold mb-4">Welcome to RERA website</h1>
-            <p class="text-xl text-gray-600">Your personal go-to in computer science engineering where you can find resources, projects, videos and many more</p>
+            <p class="text-xl text-gray-600">Your personal go-to in computer science engineering where you can find resources, projects, videos and more.</p>
         </div>
     </section>
-
-    <!-- Info Boxes -->
-    <section class="py-16 px-4 bg-gray-100">
-        <div class="container mx-auto grid md:grid-cols-2 gap-8">
-            <div class="bg-white p-8 rounded-lg shadow-md">
-                <h2 class="text-2xl font-bold mb-4 text-blue-600">Learn more with RERA</h2>
-                <p class="text-gray-600">At RERA, we believe in turning code into creativity and challenges into opportunities. Dive in, learn, and let your programming journey shape the future!</p>
-            </div>
-            <div class="bg-white p-8 rounded-lg shadow-md">
-                <h2 class="text-2xl font-bold mb-4 text-blue-600">Create yourself for the Future</h2>
-                <p class="text-gray-600">RERA provides a curated library of resources, from web and app development to essential programming languages. Empower your learning with expert tutorials, YouTube links, and roadmaps to turn your coding aspirations into achievements.</p>
+    <!-- Learn More Section -->
+    <section class="py-16 px-4 section bg-blue-100">
+        <div class="container mx-auto text-center">
+            <div class="flex flex-col md:flex-row justify-center items-center gap-8">
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl font-bold mb-4 text-blue-600">Learn more with RERA</h2>
+                    <p class="text-xl text-gray-700 mb-8">At RERA, we believe in turning code into creativity and challenges into opportunities. Dive in, learn, and let your programming journey shape the future!</p>
+                </div>
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl font-bold mb-4 text-blue-600">Create yourself for the Future</h2>
+                    <p class="text-xl text-gray-700">RERA provides a curated library of resources, from web and app development to essential programming languages. Empower your learning with expert tutorials, YouTube links, and roadmaps to turn your coding aspirations into achievements.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -61,117 +74,83 @@
     <!-- Collections -->
     <section id="courses" class="py-16 px-4 section">
         <div class="container mx-auto">
-            <h2 class="text-3xl font-bold text-center mb-2">Collections</h2>
-            <p class="text-center text-gray-600 mb-12">All time best collections</p>
-            <p class="text-center text-xl mb-12">WE ARE PROVIDING THE BEST OF RESOURCES, Follow RERA to learn more</p>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-
-                <!-- Course Cards -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-4"> 🌐Web Development </h3>
-                        <p class="text-gray-600 mb-4">Web development is the process of building and maintaining websites and web applications.</p>
-                        <div class="space-y-2">
-                            <a href="https://roadmap.sh/full-stack" class="block text-blue-600 hover:text-blue-800" target="_blank"><i class="bi bi-map"></i> Roadmap</a>
-                            <a href="https://www.geeksforgeeks.org/web-development/" class="block text-blue-600 hover:text-blue-800" target="_blank"><i class="bi bi-journal-text"></i> Notes</a>
-                            <a href="https://youtu.be/9He4UBLyk8Y?si=cHays-GZAmCKGf-E" class="block text-blue-600 hover:text-blue-800" target="_blank"><i class="bi bi-play-circle"></i> Video</a>
-                    </div>
+            <h2 class="text-3xl font-bold text-center mb-4">Collections</h2>
+            <p class="text-center text-gray-600 mb-8">All time best collections</p>
+            <div class="flex flex-wrap justify-center gap-8">
+                <div class="bg-white rounded-lg shadow-md overflow-hidden p-6 card w-full md:w-1/2 lg:w-1/4">
+                    <h3 class="text-xl font-bold mb-4">🌐 Web Development</h3>
+                    <p class="text-gray-600 mb-4">Build and maintain websites and web applications.</p>
+                    <a href="https://roadmap.sh/full-stack" class="text-blue-600 hover:text-blue-800" target="_blank"><i class="bi bi-map"></i> Roadmap</a>
+                    <a href="https://www.geeksforgeeks.org/web-development/" class="text-blue-600 hover:text-blue-800" target="_blank"><i class="bi bi-journal-text"></i> Notes</a>
+                    <a href="https://youtu.be/9He4UBLyk8Y?si=cHays-GZAmCKGf-E" class="text-blue-600 hover:text-blue-800" target="_blank"><i class="bi bi-play-circle"></i> Video</a>
                 </div>
-
-                <!-- Python Card -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-4">🐍 Python</h3>
-                        <p class="text-gray-600 mb-4">Learn Python programming from basics to advanced concepts.</p>
-                        <div class="space-y-2">
-                            <a href="https://roadmap.sh/python" class="block text-blue-600 hover:text-blue-800" target="_blank"><i class="bi bi-map"></i> Roadmap</a>
-                            <a href="https://youtu.be/_uQrJ0TkZlc?si=--YWnOd0wybcALGn" class="block text-blue-600 hover:text-blue-800"target="_blank"><i class="bi bi-journal-text"></i> Notes</a>
-                            <a href="https://www.w3schools.com/python/default.asp" class="block text-blue-600 hover:text-blue-800"target="_blank"><i class="bi bi-play-circle"></i> Video</a>
-                        </div>
-                    </div>
+                <div class="bg-white rounded-lg shadow-md overflow-hidden p-6 card">
+                    <h3 class="text-xl font-bold mb-4">🐍 Python</h3>
+                    <p class="text-gray-600 mb-4">Learn Python from basics to advanced concepts.</p>
+                    <a href="https://roadmap.sh/python" class="text-blue-600 hover:text-blue-800" target="_blank"><i class="bi bi-map"></i> Roadmap</a>
+                    <a href="https://youtu.be/_uQrJ0TkZlc?si=--YWnOd0wybcALGn" class="text-blue-600 hover:text-blue-800" target="_blank"><i class="bi bi-journal-text"></i> Notes</a>
+                    <a href="https://www.w3schools.com/python/default.asp" class="text-blue-600 hover:text-blue-800" target="_blank"><i class="bi bi-play-circle"></i> Video</a>
                 </div>
-
-                <!-- C Language Card -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-4">💻 C++ Language</h3>
-                        <p class="text-gray-600 mb-4">Master the fundamentals of programming with C language.</p>
-                        <div class="space-y-2">
-                            <a href="https://roadmap.sh/cpp" class="block text-blue-600 hover:text-blue-800" target="_blank"><i class="bi bi-map"></i> Roadmap</a>
-                            <a href="https://www.geeksforgeeks.org/c-plus-plus/" class="block text-blue-600 hover:text-blue-800" target="_blank"><i class="bi bi-journal-text"></i> Notes</a>
-                            <a href="https://youtu.be/ZzaPdXTrSb8?si=nl3SabLOUMwz1f9B" class="block text-blue-600 hover:text-blue-800" target="_blank"><i class="bi bi-play-circle"></i> Video</a>
-                        </div>
-                    </div>
+                <div class="bg-white rounded-lg shadow-md overflow-hidden p-6 card">
+                    <h3 class="text-xl font-bold mb-4">💻 C++ Language</h3>
+                    <p class="text-gray-600 mb-4">Master the fundamentals of programming with C++.</p>
+                    <a href="https://roadmap.sh/cpp" class="text-blue-600 hover:text-blue-800" target="_blank"><i class="bi bi-map"></i> Roadmap</a>
+                    <a href="https://www.geeksforgeeks.org/c-plus-plus/" class="text-blue-600 hover:text-blue-800" target="_blank"><i class="bi bi-journal-text"></i> Notes</a>
+                    <a href="https://youtu.be/ZzaPdXTrSb8?si=nl3SabLOUMwz1f9B" class="text-blue-600 hover:text-blue-800" target="_blank"><i class="bi bi-play-circle"></i> Video</a>
                 </div>
-
-                <!-- Java Card -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-4">☕ Java</h3>
-                        <p class="text-gray-600 mb-4">Explore Java programming and object-oriented concepts.</p>
-                        <div class="space-y-2">
-                            <a href="https://roadmap.sh/java" class="block text-blue-600 hover:text-blue-800" target="_blank"><i class="bi bi-map"></i> Roadmap</a>
-                            <a href="https://youtu.be/eIrMbAQSU34?si=xmQS-OfvuG4CQeiU" class="block text-blue-600 hover:text-blue-800" target="_blank"><i class="bi bi-play-circle"></i> Video</a>
-                            <a href="https://www.codewithharry.com/tutorial/java/" class="block text-blue-600 hover:text-blue-800"><i class="bi bi-journal-text"></i> Notes</a>
-                        </div>
-                    </div>
+                <div class="bg-white rounded-lg shadow-md overflow-hidden p-6 card">
+                    <h3 class="text-xl font-bold mb-4">☕ Java</h3>
+                    <p class="text-gray-600 mb-4">Explore Java programming and OOP concepts.</p>
+                    <a href="https://roadmap.sh/java" class="text-blue-600 hover:text-blue-800" target="_blank"><i class="bi bi-map"></i> Roadmap</a>
+                    <a href="https://youtu.be/eIrMbAQSU34?si=xmQS-OfvuG4CQeiU" class="text-blue-600 hover:text-blue-800" target="_blank"><i class="bi bi-play-circle"></i> Video</a>
+                    <a href="https://www.codewithharry.com/tutorial/java/" class="text-blue-600 hover:text-blue-800" target="_blank"><i class="bi bi-journal-text"></i> Notes</a>
+                </div>
+                <div class="bg-white rounded-lg shadow-md overflow-hidden p-6 card">
+                    <h3 class="text-xl font-bold mb-4">📚 Additional Resources</h3>
+                    <p class="text-gray-600 mb-4">Explore more resources for learning and development.</p>
+                    <a href="https://www.geeksforgeeks.org/" class="text-blue-600 hover:text-blue-800" target="_blank"><i class="bi bi-journal-text"></i> GeeksforGeeks</a>
+                    <a href="https://www.youtube.com/channel/UC0RhatS1pyxInC00YKjjBqQ" class="text-blue-600 hover:text-blue-800" target="_blank"><i class="bi bi-play-circle"></i> CodeWithHarry</a>
+                    <a href="https://www.youtube.com/channel/UCkw4JCwteGrDHIsyIIKo4tQ" class="text-blue-600 hover:text-blue-800" target="_blank"><i class="bi bi-play-circle"></i> CodeWithMosh</a>
+                </div>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- About Section -->
-    <section id="about" class="py-16 px-4 bg-gray-100 section">
-        <div class="container mx-auto">
-            <h2 class="text-3xl font-bold text-center mb-8">About Us</h2>
-            <div class="max-w-3xl mx-auto text-center">
-                <p class="text-gray-600 mb-4">
-                    RERA is your comprehensive platform for computer science education. We're dedicated to providing high-quality resources and structured learning paths for aspiring developers and computer science enthusiasts.
-                </p>
-                <p class="text-gray-600">
-                    Our mission is to make computer science education accessible, engaging, and effective for everyone.
-                </p>
-            </div>
+    
+    <!-- About Us Section -->
+    <section id="about" class="py-16 px-4 section">
+        <div class="container mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-4">About Us</h2>
+            <p class="text-gray-600 mb-8">RERA is your comprehensive platform for computer science education. We're dedicated to providing high-quality resources and structured learning paths for aspiring developers and computer science enthusiasts.</p>
+            <p class="text-gray-600">Our mission is to make computer science education accessible, engaging, and effective for everyone.</p>
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Contact Us Section -->
     <section id="contact" class="py-16 px-4 section">
-        <div class="container mx-auto">
-            <h2 class="text-3xl font-bold text-center mb-8">Contact Us</h2>
-            <div class="max-w-lg mx-auto">
-                <div class="bg-white rounded-lg shadow-md p-8">
-                    <div class="space-y-4">
-                        <div class="flex items-center space-x-3">
-                            <i class="bi bi-envelope text-blue-600"></i>
-                            <a href="mailto:rayeesamhamood8098@gmail.com" class="text-gray-600 hover:text-blue-600">rayeesamhamood8098@gmail.com</a>
-                        </div>
-                        <div class="flex items-center space-x-3">
-                            <i class="bi bi-envelope text-blue-600"></i>
-                            <a href="mailto:kaleemreda@gmail.com" class="text-gray-600 hover:text-blue-600">kaleemreda@gmail.com</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="container mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-4">Contact Us</h2>
+            <p class="text-gray-600 mb-8">Feel free to reach out to us at:</p>
+            <p class="text-blue-600"><a href="mailto:rayeesamhamood8098@gmail.com" class="hover:text-blue-800 transition">rayeesamhamood8098@gmail.com</a></p>
+            <p class="text-blue-600"><a href="mailto:kaleemreda@gmail.com" class="hover:text-blue-800 transition">kaleemreda@gmail.com</a></p>
+        </div>
+        <div class="flex justify-center mt-8">
+            <img src="https://i.postimg.cc/zBk57b1d/Beige-White-Modern-Concept-Football-Logo.jpg" alt="RERA Logo" class="h-48">
+        </div>
         </div>
     </section>
-
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-8">
-        <div class="container mx-auto px-4 text-center">
-            <p> &copy; 2024 RERA. All rights reserved.</p>
-        </div>
-    </footer>
-
     <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
+        document.addEventListener("DOMContentLoaded", function () {
+            const sections = document.querySelectorAll(".section");
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                    }
                 });
+            }, { threshold: 0.1 });
+            sections.forEach(section => {
+                observer.observe(section);
             });
         });
     </script>
